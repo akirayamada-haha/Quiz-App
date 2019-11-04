@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.question-box-one {
+    display: flex;
+}
+
+.question-box-two {
+    display: flex;
+    display: hidden;
+}
+
+.question-box-three {
+    display: flex;
+    display: hidden;
+}
+
+.question-box-four {
+    display: flex;
+    display: hidden;
+}
+
+.question-box-five {
+    display: flex;
+    display: hidden;
+}
+
+.header {
+    display: fixed;
+}
