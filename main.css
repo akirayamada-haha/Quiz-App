@@ -6,71 +6,17 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.header {
+header {
     display: flex;
     justify-content: center;
     background-color: grey; 
 }
 
-ul {
-    display: flex;
-    flex-direction: row;
-}
-
-li {
-    list-style: none;
-    text-align: center;
-    background-color: #000000;
-    margin-right: 30px;
-    width: 150px;
-    line-height: 40px;
-    
-}
-
-li a {
-    text-decoration: none;
-    color: #FFFFFF;
-    display: block;
-    background-color: black;
-
-}
-
-button {
-    width: 150px;
-    line-height: 20px;
-}
-
-.question-box-one {
+.container {
     display: flex;
     background-color: grey;
     border: 1px groove black;
-    margin: 200px 200px 300px 200px;
+    margin: 200px 200px 200px 200px;
     border-radius: 5px;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-}
-
-.question-box-two {
-    display: flex;
-    display: none;
-}
-
-.question-box-three {
-    display: flex;
-    display: none;
-}
-
-.question-box-four {
-    display: flex;
-    display: none;
-}
-
-.question-box-five {
-    display: flex;
-    display: none;
-}
-
-.header {
-    display: fixed;
 }
