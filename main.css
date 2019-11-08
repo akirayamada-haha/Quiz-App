@@ -13,10 +13,45 @@ header {
 }
 
 .container {
-    display: flex;
+    position: fixed;
     background-color: grey;
     border: 1px groove black;
-    margin: 200px 200px 200px 200px;
+    height: 350px;
+    width: 1000px;
+    top: 25%;
+    left: 25%;
     border-radius: 5px;
+}
+
+.container h2 {
+    display: flex;
     justify-content: center;
 }
+
+.container form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.container h3 {
+    display: flex;
+    justify-content: center;
+}
+
+.container h4 {
+    display: flex;
+    margin-left: 5%;
+    
+}
+
+
+
+/*
+
+
+.intro-box .counter {
+    position: absolute;
+
+}*/
