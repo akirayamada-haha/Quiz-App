@@ -5,22 +5,21 @@
 
 function startQuiz() {
     $('.container').on('click', '.start', function (event) {
+        event.preventDefault();
         renderQuestion()
     })
 }
 
 //
-
+//Co-authored-by: chazlee98@gmail.com <chazlee98@gmail.com>//
 function renderQuestion() {
     console.log(STORE.questions[STORE.currentQuestion].question);
-    $('.container').text(STORE.questions[STORE.currentQuestion].question);
 
     $('.question-title').text(STORE.questions[STORE.currentQuestion].question);
 
     let question = STORE.questions[STORE.currentQuestion];
-    console.log($('.answer-choices'))
     for (let i = 0; i < question.answers.length; i++) {
-        $('.answer-choices').append(`<input type="radio" name="${'answer' + (i + 1)}" value="${question.answers[i]}">${question.answers[i]}`);
+        $('.answer-choices').append(`<input type="radio" name="answer" value="${question.answers[i]}"/>${question.answers[i]}`); // hello
     }
 }
 
