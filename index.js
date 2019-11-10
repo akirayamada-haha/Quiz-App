@@ -1,4 +1,30 @@
-//need score and counter set to starting value
+/*
+  - when the start button is clicked - render the quiz info section and render the quiz question container section, 
+  the quiz question container is the one that will have cycled through each question and each feedback screen 
+*/
+
+function startQuiz() {
+    $('.container').on('click', '.start', function (event) {
+        renderQuestion()
+    })
+}
+
+//
+
+function renderQuestion() {
+    console.log(STORE.questions[STORE.currentQuestion].question);
+    $('.container').text(STORE.questions[STORE.currentQuestion].question);
+
+    $('.question-title').text(STORE.questions[STORE.currentQuestion].question);
+
+    let question = STORE.questions[STORE.currentQuestion];
+    console.log($('.answer-choices'))
+    for (let i = 0; i < question.answers.length; i++) {
+        $('.answer-choices').append(`<input type="radio" name="${'answer' + (i + 1)}" value="${question.answers[i]}">${question.answers[i]}`);
+    }
+}
+
+//setting currentQuestion value so generateQuestion and renderQuestion know which element in the array to pick from 
 
 //on clicking start, replace landing page html with question 1 html, pulled from store
 
@@ -83,3 +109,6 @@
 //generate final page
 
 //render final page
+
+
+$(startQuiz);

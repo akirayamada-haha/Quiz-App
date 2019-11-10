@@ -1,5 +1,5 @@
 const STORE = {
-    currentQuestion: 1,
+    currentQuestion: 0,
     score: 0,
     questions: [{
         question: 'Which of the following exercises heavily target the chest muscles?',
