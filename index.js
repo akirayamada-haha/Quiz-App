@@ -7,10 +7,14 @@ function startQuiz() {
     $('.container').on('click', '.start', function (event) {
         event.preventDefault();
         renderQuestion()
+        renderSubmitButton();
+        renderScore();
+        renderQuestionCount();
+        checkCorrectAnswer();
     })
 }
 
-//
+//Creates the first question
 //Co-authored-by: chazlee98@gmail.com <chazlee98@gmail.com>//
 function renderQuestion() {
     console.log(STORE.questions[STORE.currentQuestion].question);
@@ -19,8 +23,69 @@ function renderQuestion() {
 
     let question = STORE.questions[STORE.currentQuestion];
     for (let i = 0; i < question.answers.length; i++) {
-        $('.answer-choices').append(`<input type="radio" name="answer" value="${question.answers[i]}"/>${question.answers[i]}`); // hello
+        $('.answer-choices').append(`<input type="radio" name="answer" value="${question.answers[i]}" required>${question.answers[i]}`); // hello
     }
+}
+
+//Changes the start button to a submit button
+function renderSubmitButton() {
+    $('.start').html(`<form class="submit">
+    <input type="submit" value="Submit">
+</form>`);
+}
+
+function renderScore() {
+    $('.score-and-count').append(`<span class="score">Score:<span class="score-data">0</span></span>`);
+}
+
+function renderQuestionCount() {
+    $('.score-and-count').append(`<span class="count">Question:<span class="count-data">0</span>/5</span>`);
+}
+
+//creates feedback upon selecting and submitting correct answer
+function correctAnswer() {
+    $('.answer-choices').after('<h3>That is correct! Hit "Next" to continue!</h3>');
+
+}
+
+//creates feedback upon selecting and submitting incorrect answer
+function wrongAnswer() {
+    $('.answer-choices').after('<h3>Incorrect. ${STORE.questions[STORE.currentQuestion].correctAnswer} is the correct answer. Hit "Next" to conintue</h3>');
+}
+
+//changes submit button to next button
+function renderNextButton() {
+    $('.submit').html(`<form class="next">
+    <input type="submit" value="Next">
+</form>`);
+}
+
+/*function updateCurrentQuestion() {
+    STORE.currentQuestion++;
+    $('')
+}
+
+function updateScore() {
+
+}*/
+
+//checks if answer is correct, then runs relative functions
+function checkCorrectAnswer() {
+    $('.submit').on('click', function (event) {
+        event.preventDefault();
+        let correct = $('STORE.questions[STORE.currentQuestion].correctAnswer').val();
+        $('STORE.questions[STORE.currentQuestion].correctAnswer').val('');
+        let answer = $('input[type="radio"][name="answer"]:checked').val();
+
+    if(answer === correct) {
+        correctAnswer();
+    }   else {
+        wrongAnswer();
+    }
+    renderNextButton();
+    updateCurrentQuestion();
+    updateScore();
+    });
 }
 
 //setting currentQuestion value so generateQuestion and renderQuestion know which element in the array to pick from 

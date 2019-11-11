@@ -40,9 +40,10 @@ header {
     justify-content: center;
 }
 
-.container h4 {
+.container .score-and-count {
     display: flex;
-    margin-left: 5%;
+    justify-content: space-between;
+    margin: 25px 50px 25px;
     
 }
 
