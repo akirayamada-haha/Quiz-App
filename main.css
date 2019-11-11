@@ -47,6 +47,10 @@ header {
     
 }
 
+form .submit {
+    display: none;
+  }
+
 
 
 /*

@@ -17,22 +17,20 @@ function startQuiz() {
 //Creates the first question
 //Co-authored-by: chazlee98@gmail.com <chazlee98@gmail.com>//
 function renderQuestion() {
-    console.log(STORE.questions[STORE.currentQuestion].question);
-
     $('.question-title').text(STORE.questions[STORE.currentQuestion].question);
 
     let question = STORE.questions[STORE.currentQuestion];
     for (let i = 0; i < question.answers.length; i++) {
-        $('.answer-choices').append(`<input type="radio" name="answer" value="${question.answers[i]}" required>${question.answers[i]}`); // hello
+        $('.answer-choices').append(`<input type="radio" name="answer" value="${question.answers[i]}" required>${question.answers[i]}`);
+        $('.start').hide();
+        $('.submit').show(); // hello
     }
 }
 
-//Changes the start button to a submit button
-function renderSubmitButton() {
-    $('.start').html(`<form class="submit">
-    <input type="submit" value="Submit">
-</form>`);
-}
+
+/*function renderSubmitButton() {
+    $('.start').html(`<input class="submit" type="submit" value="Submit">`);
+}*/
 
 function renderScore() {
     $('.score-and-count').append(`<span class="score">Score:<span class="score-data">0</span></span>`);
@@ -55,10 +53,7 @@ function wrongAnswer() {
 
 //changes submit button to next button
 function renderNextButton() {
-    $('.submit').html(`<form class="next">
-    <input type="submit" value="Next">
-</form>`);
-}
+    $('.submit').html(`<input class="submit" type="submit" value="Next">`);
 
 /*function updateCurrentQuestion() {
     STORE.currentQuestion++;
