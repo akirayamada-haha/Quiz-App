@@ -6,168 +6,211 @@
 function startQuiz() {
     $('.container').on('click', '.start', function (event) {
         event.preventDefault();
-        renderQuestion()
-        renderSubmitButton();
-        renderScore();
-        renderQuestionCount();
-        checkCorrectAnswer();
-    })
-}
-
-//Creates the first question
-//Co-authored-by: chazlee98@gmail.com <chazlee98@gmail.com>//
-function renderQuestion() {
-    $('.question-title').text(STORE.questions[STORE.currentQuestion].question);
-
-    let question = STORE.questions[STORE.currentQuestion];
-    for (let i = 0; i < question.answers.length; i++) {
-        $('.answer-choices').append(`<input type="radio" name="answer" value="${question.answers[i]}" required>${question.answers[i]}`);
-        $('.start').hide();
-        $('.submit').show(); // hello
-    }
-}
-
-
-/*function renderSubmitButton() {
-    $('.start').html(`<input class="submit" type="submit" value="Submit">`);
-}*/
-
-function renderScore() {
-    $('.score-and-count').append(`<span class="score">Score:<span class="score-data">0</span></span>`);
-}
-
-function renderQuestionCount() {
-    $('.score-and-count').append(`<span class="count">Question:<span class="count-data">0</span>/5</span>`);
-}
-
-//creates feedback upon selecting and submitting correct answer
-function correctAnswer() {
-    $('.answer-choices').after('<h3>That is correct! Hit "Next" to continue!</h3>');
-
-}
-
-//creates feedback upon selecting and submitting incorrect answer
-function wrongAnswer() {
-    $('.answer-choices').after('<h3>Incorrect. ${STORE.questions[STORE.currentQuestion].correctAnswer} is the correct answer. Hit "Next" to conintue</h3>');
-}
-
-//changes submit button to next button
-function renderNextButton() {
-    $('.submit').html(`<input class="submit" type="submit" value="Next">`);
-
-/*function updateCurrentQuestion() {
-    STORE.currentQuestion++;
-    $('')
-}
-
-function updateScore() {
-
-}*/
-
-//checks if answer is correct, then runs relative functions
-function checkCorrectAnswer() {
-    $('.submit').on('click', function (event) {
-        event.preventDefault();
-        let correct = $('STORE.questions[STORE.currentQuestion].correctAnswer').val();
-        $('STORE.questions[STORE.currentQuestion].correctAnswer').val('');
-        let answer = $('input[type="radio"][name="answer"]:checked').val();
-
-    if(answer === correct) {
-        correctAnswer();
-    }   else {
-        wrongAnswer();
-    }
-    renderNextButton();
-    updateCurrentQuestion();
-    updateScore();
+        // render question container and quiz info containers
+        // then render the question in the question container
+        generateHTMLContainers();
+        renderContainers();
+        generateQuestionHTML();
+        handleSubmit();
+        nextQuestion();
+        handleFinish();
+        handleRestart();
     });
 }
 
-//setting currentQuestion value so generateQuestion and renderQuestion know which element in the array to pick from 
+function generateHTMLContainers() {
+  return `<section class='question-container'>
+    ${generateQuestionHTML()}
+  </section>
+  <section class='quiz-info'>
+    <span class="score">Score:<span class="score-data">${STORE.score}</span></span>
+    <span class="count">Question:<span class="count-data">${STORE.currentQuestion + 1}</span>/5</span>
+  </section>`
+}
 
-//on clicking start, replace landing page html with question 1 html, pulled from store
+function renderContainers() {
+  $('main').html(generateHTMLContainers());
+}
 
-//generate question 1 html
+function generateQuestionHTML() {
+    const question = STORE.questions[STORE.currentQuestion].question;
+    const answers = STORE.questions[STORE.currentQuestion].answers;
+    const options = answers.map(answer => { 
+      return `<input type="radio" name="answer" value="${answer}" required>${answer}`
+    }).join('');
 
-//render question 1 html
+    const questionHTML = `<form class='question-form'>
+      <fieldset>
+        <legend>${question}</legend>
+        ${options}
+        <input type='submit' value="Submit"/>
+      </fieldset>
+    </form>`
 
-//when answer is submitted, check against correctAnswer
+    return questionHTML;
+  }
+    // cool, thats it. so now when you submit, we'll target question container and render the feedback, then when next is clicked target it again and repeat render question etc
+    // clear from here?
 
-//based on answer selected, when submit is clicked, give feedback and update html with next button
+function correctFinalAnswer() {
+  return `<p>That is correct! Hit "Finish" to complete the quiz!</p>`
+}
 
-//generate feedback
+function wrongFinalAnswer() {
+  return `<p>That is incorrect, ${STORE.questions[STORE.currentQuestion].correctAnswer} is the correct answer. Hit "Finish" to complete the quiz.</p>`
+}
 
-//render feedback
 
-//update score and counter
+function scoreFinalAnswer() {
+  let answer = $('input[type="radio"][name="answer"]:checked').val();
+  let correct = STORE.questions[STORE.currentQuestion].correctAnswer;
+  if(answer === correct) {
+    increaseScore();
+    return correctFinalAnswer();
+  } else {
+    return wrongFinalAnswer();
+  }
+}
 
-//on clicking next, replace question 1 page html with question 2 html, pulled from store
 
-//generate question 2 html
+function generateFinalFeedback() {
+  return `<section class='feedback-container'>
+    <h2>${STORE.questions[STORE.currentQuestion].question}</h2>
+    ${scoreFinalAnswer()} 
+  </section>
+  <div class="final-question">
+        <input type='submit' value="Finish"/>
+    </div>
+  <section class='quiz-info'>
+    <span class="score">Score:<span class="score-data">${STORE.score}</span></span>
+    <span class="count">Question:<span class="count-data">${STORE.currentQuestion + 1}</span>/5</span>
+  </section>`
+}
 
-//render question 2 html
+function renderFinalFeedback() {
+  $('main').html(generateFinalFeedback());
+}
 
-//when answer is submitted, check against correctAnswer
+function handleSubmit() {
+  $('.question-form').on('submit', function (event) {
+    event.preventDefault();
+  if(STORE.currentQuestion === 4) {
+    return renderFinalFeedback();
+  } else {
+    return renderFeedbackHTML();
+  }
+    
+  });
+}
 
-//based on answer selected, when submit is clicked, give feedback and update html with next button
+function renderFeedbackHTML() {
+  $('main').html(generateFeedbackHTML()); 
+}
 
-//generate feedback
+function generateFeedbackHTML() { 
+  return `<section class='feedback-container'>
+    <h2>${STORE.questions[STORE.currentQuestion].question}</h2>
+    ${scoreAnswer()} 
+  </section>
+  <div class="next-question">
+        <input type='submit' value="Next"/>
+    </div>
+  <section class='quiz-info'>
+    <span class="score">Score:<span class="score-data">${STORE.score}</span></span>
+    <span class="count">Question:<span class="count-data">${STORE.currentQuestion + 1}</span>/5</span>
+  </section>`
+}
 
-//render feedback
+function correctAnswer() { 
+  return `<p>That is correct! Hit "Next" to continue!</p>`
+}
 
-//update score and counter
+function wrongAnswer() { 
+  return `<p>That is incorrect, ${STORE.questions[STORE.currentQuestion].correctAnswer} is the correct answer. Hit "Next to continue.</p>`
+}
 
-//on clicking next, replace question 2 page html with question 3 html, pulled from store
+function increaseScore() { 
+  STORE.score++;
+}
 
-//generate question 3 html
+function scoreAnswer() {
+  let answer = $('input[type="radio"][name="answer"]:checked').val();
+  let correct = STORE.questions[STORE.currentQuestion].correctAnswer;
+  if(answer === correct) {
+    increaseScore();
+    return correctAnswer();
+  } else {
+    return wrongAnswer();
+  }
+}
 
-//render question 3 html
+function increaseCurrentQuestion() {
+  STORE.currentQuestion++;
+}
 
-//when answer is submitted, check against correctAnswer
+function nextQuestion() {
+  $('.container').on('click','.next-question', function (event) {
+    event.preventDefault();
+    increaseCurrentQuestion();
+    renderContainers();
+    handleSubmit();
+  });
+}
 
-//based on answer selected, when submit is clicked, give feedback and update html with next button
+function generateFinishHTML() {
+  return `<section class='finish-container'>
+    <h2>Congratulations! You've completed the Workout Quiz!</h2> 
+    <p>Click "Restart" to take the quiz again!</p>
+  </section>
+  <section class='quiz-info'>
+    <span class="final-score">Your Final Score: <span class="final-score-data">${STORE.score}</span></span>
+  </section>
+  <div class="restart-quiz">
+        <input type='submit' value="Restart"/>
+  </div>`
+}
 
-//generate feedback
+function renderFinishHTML() {
+  $('main').html(generateFinishHTML());
+}
 
-//render feedback
+function handleFinish() {
+  $('.container').on('click', '.final-question', function (event) {
+    event.preventDefault();
+    renderFinishHTML();
+  });
+}
 
-//update score and counter
+function turnOffNextQuestion() {
+   $('.container').off('click','.next-question');
+}
 
-//on clicking next, replace question 3 page html with question 4 html, pulled from store
+function resetQuizData() {
+  STORE.score = 0,
+  STORE.currentQuestion = 0;
+}
 
-//generate question 4 html
+function generateRestartHTML() {
+  return `<main class="container">
+      <h2 class="question-title">Welcome to the Workout Quiz! Click "Start" to begin!</h2>
+      <form class="start-quiz">
+          <input class="start" type="submit" value="Start">
+      </form>
+    </main>`
+}
 
-//render question 4 html
+function renderRestartHTML() {
+  $('main').html(generateRestartHTML());
+}
 
-//when answer is submitted, check against correctAnswer
-
-//based on answer selected, when submit is clicked, give feedback and update html with next button
-
-//generate feedback
-
-//render feedback
-
-//update score and counter
-
-//on clicking next, replace question 4 page html with question 5 html, pulled from store
-
-//generate question 5 html
-
-//render question 5 html
-
-//when answer is submitted, check against correctAnswer
-
-//based on answer selected, when submit is clicked, give feedback and update html with finish button
-
-//generate feedback
-
-//render feedback
-
-//Upon clicking finish, replace question 5 page html with final page html and restart button
-
-//generate final page
-
-//render final page
-
+function handleRestart() {
+  $('.container').on('click', '.restart-quiz', function (event) {
+    event.preventDefault();
+    turnOffNextQuestion();
+    resetQuizData();
+    renderRestartHTML();
+  });
+}
 
 $(startQuiz);
+

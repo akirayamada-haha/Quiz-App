@@ -47,10 +47,6 @@ header {
     
 }
 
-form .submit {
-    display: none;
-  }
-
 
 
 /*
@@ -60,3 +56,5 @@ form .submit {
     position: absolute;
 
 }*/
+
+
