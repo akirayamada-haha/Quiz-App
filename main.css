@@ -1,60 +1,106 @@
-* {
-    box-sizing: border-box;
+body * {
+  box-sizing: border-box;
+}
+
+html, body {
+font-family: 'Roboto', sans-serif;
+color: white;
+padding: 0;
+margin: 0;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+background: url('https://wallpaperplay.com/walls/full/7/2/2/32755.jpg');
+background-size: cover;
+height: 100vh;
 }
 
 header {
-    display: flex;
-    justify-content: center;
-    background-color: grey; 
+position: absolute;
+top: 0;
+width: 100%;
+height: 75px;
+background: black;
+text-align: center;
 }
 
-.container {
-    position: fixed;
-    background-color: grey;
-    border: 1px groove black;
-    height: 350px;
-    width: 1000px;
-    top: 25%;
-    left: 25%;
-    border-radius: 5px;
+main {
+width: 95%;
+background: rgba(0,0,0,.8);
+margin: 150px auto 0;
+padding: 25px;
+text-align: center;
+border-radius: 5px;
 }
 
-.container h2 {
-    display: flex;
-    justify-content: center;
+.question-container {
+display: flex;
+justify-content: center;
+width: 95%;
+background: rgba(0,0,0,.8);
+margin: 15px auto 0;
+padding: 25px;
+text-align: center;
+border-radius: 5px;
 }
 
-.container form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
+.question-legend {
+font-size: 2em;
 }
 
-.container h3 {
-    display: flex;
-    justify-content: center;
+.start {
+margin: 5% auto;
 }
 
-.container .score-and-count {
-    display: flex;
-    justify-content: space-between;
-    margin: 25px 50px 25px;
-    
+.question-submit {
+margin: 5% auto;
 }
 
+form {
+text-align: center;
+}
 
+fieldset {
+border: 0;
+}
 
-/*
+form input {
+display: block;
+border-radius: 20px;
+}
 
+.next-question input {
+border-radius: 20px;
+margin: 2% auto;
+}
 
-.intro-box .counter {
-    position: absolute;
+.final-question input {
+border-radius: 20px;
+margin: 2% auto;
+}
 
-}*/
+.restart-quiz input {
+border-radius: 20px;
+margin: 2% auto;
+}
 
+.question-input {
+display: none;
+}
 
+label {
+cursor: pointer;
+display: block;
+width: 100%;
+background: grey;
+color: white;
+border: 1px solid white;
+}
+
+label:hover {
+background: rgba(255, 0, 0, 0.534);
+}
+
+input[type=radio]:checked + label{
+background: blue;
+}

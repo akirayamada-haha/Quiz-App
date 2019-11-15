@@ -22,7 +22,7 @@ const STORE = {
         correctAnswer: 'Squat'
     },
     {
-        question: 'Which Rep Ranges most are associated with maximal strength?',
+        question: 'Which Rep Ranges are most associated with maximal strength?',
         answers: [
             '1 - 3',
             '5',
