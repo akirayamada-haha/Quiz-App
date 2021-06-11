@@ -41,7 +41,7 @@ The app's functionality includes:
 ### 9. Screenshots 
 Question Page
 :-------------------------:
-![Question Page](/github-images/screenshots/quiz-app-screenshot.png)
+![Question Page](/github-images/quiz-app-screenshot.png)
 
 
 
