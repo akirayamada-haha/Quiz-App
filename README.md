@@ -2,11 +2,11 @@
 A series of multiple choice questions centered around working out. The score and question count are calculated automatically, as well as relevant feedback to each answer submitted. I created this app to demonstrate my abilities with jQuery, and it is for anyone interested in fitness!
 
 
-### 1. Working Prototype 
+### Working Prototype 
 You can access a working prototype here: https://evanpoe.github.io/Quiz-App/
 
 
-### 2. User Stories 
+### User Stories 
 
 ###### Landing Page (Importance - High) (Est: 1h)
 * as a visitor
@@ -25,7 +25,7 @@ You can access a working prototype here: https://evanpoe.github.io/Quiz-App/
 
 
 
-### 3. Functionality 
+### Functionality 
 The app's functionality includes:
 * Every user can start the quiz
 * Every user can take the quiz
@@ -33,18 +33,18 @@ The app's functionality includes:
 
 
 
-### 4. Technology 
+### Technology 
 * Front-End: HTML5, CSS3, JavaScript ES6, jQuery
 
 
 
-### 9. Screenshots 
+### Screenshots 
 Question Page
 :-------------------------:
 ![Question Page](/github-images/quiz-app-screenshot.png)
 
 
 
-### 10. Development Roadmap 
+### Development Roadmap 
 This is v1.0 of the app, but future enhancements are expected to include:
 * add database support
