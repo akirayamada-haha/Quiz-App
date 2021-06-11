@@ -1,149 +1,50 @@
-# Quiz-App (to do now)
-One line description of what this app is doing and who is it for
+# Quiz-App 
+A series of multiple choice questions centered around working out. The score and question count are calculated automatically, as well as relevant feedback to each answer submitted. I created this app to demonstrate my abilities with jQuery, and it is for anyone interested in fitness!
 
 
-
-### 1. Working Prototype (to do later)
-(Example) You can access a working prototype of the React app here: https://your-app-client.herokuapp.com/ and Node app here: https://your-app-server.herokuapp.com/
-
+### 1. Working Prototype 
+You can access a working prototype here: https://evanpoe.github.io/Quiz-App/
 
 
-### 2. User Stories (to do now)
-This app is for two types of users: a visitor and a logged-in user
+### 2. User Stories 
 
-###### (Example) Landing Page (Importance - High) (Est: 1h)
+###### Landing Page (Importance - High) (Est: 1h)
 * as a visitor
-* I want to understand what I can do with this app (or sign up, or log in)
+* I want to understand what I can do with this app 
 * so I can decide if I want to use it
 
-###### (Example) Login Page (Importance - High) (Est: 3h)
-* As a returning register user
-* I want to enter my password and username to use this app,
-* So I can have access to my account.
-
-###### (Example) Sign Up (Importance - High)  (Est: 3h)
+###### Question Page (Importance - High) (Est: 3h)
 * As a visitor
-* I want to register to use this app
-* So I can create a personal account.
+* I want to enter be able to answer a question,
+* So I can see the results.
 
-###### (Example) Home Page (Importance - Medium)  (Est: 2h)
-* As a logged-in user,
-* I want to be able to preview the content of the app,
-* So i can decide what section I want to navigate to.
+###### Results Page (Importance - Medium)  (Est: 2h)
+* As a visitor,
+* I want to be able to view final results of the quiz,
+* So i can decide if I want to take it again
 
 
 
-### 3. Functionality (to do now)
+### 3. Functionality 
 The app's functionality includes:
-* (Example) Every User has the ability to create an account
+* Every user can start the quiz
+* Every user can take the quiz
+* Every user can get their final score
 
 
 
-### 4. Technology (done)
-* Front-End: HTML5, CSS3, JavaScript ES6, React
-* Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, Postgres
-* Development Environment: Heroku, DBeaver
+### 4. Technology 
+* Front-End: HTML5, CSS3, JavaScript ES6, jQuery
 
 
 
-### 5. Wireframes (to do now)
-(Example) Landing Page
+### 9. Screenshots 
+Question Page
 :-------------------------:
-![Landing Page](/github-images/wireframes/landing-page-wireframe.png)
-Register Page
-![Register Page](/github-images/wireframes/register-page-wireframe.png)
+![Question Page](/github-images/screenshots/quiz-app-screenshot.png)
 
 
 
-### 6. Front-end Structure - React Components Map (to do later)
-* (Example) __Index.js__ (stateless)
-    * __App.js__ (stateful)
-        * __LandingPage.js__ (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the __App.js__
-            * __Login.js__ (stateful) -
-            * __Register.js__ (stateful) -
-        * __Navbar.js__ (stateless) -
-
-
-
-### 7. Back-end Structure - Business Objects (to do later)
-* (Example) Users (database table)
-    * id (auto-generated)
-    * username (email validation)
-    * password (at least 8 chars, at least one alpha and a special character validation)
-
-
-
-### 8. API Documentation (to do later)
-#### API Overview
-```text
-    /api
-    .
-    ├── /auth
-    │   └── POST
-    │       ├── /login
-    ├── /users
-    │   └── POST
-    │       └── /
-```
-
-##### POST `/api/auth/login`
-```js
-    // req.body
-    {
-        "user_name": "demo@gmail.com",
-        "password": "Password1"
-    }
-
-    // res.body
-    {
-    "authToken": String,
-        "userId": 1
-    }
-```
-
-##### POST `/api/users/`
-```js
-    // req.body
-    {
-        "user_name": "demo@gmail.com",
-        "password": "123456"
-    }
-
-
-    // res.body
-    {
-        "id": 1,
-        "user_name": "demo@gmail.com"
-    }
-```
-
-
-
-### 9. Screenshots (to do later)
-(Example) Landing Page
-:-------------------------:
-![Landing Page](/github-images/screenshots/landing-page-screenshot.png)
-Register Page
-![Register Page](/github-images/screenshots/register-page-screenshot.png)
-
-
-
-### 10. Development Roadmap (to do later)
+### 10. Development Roadmap 
 This is v1.0 of the app, but future enhancements are expected to include:
-* (Example) add more functionality
-
-
-
-### 11. How to run it (done)
-Use command line to navigate into the project folder and run the following in terminal
-
-##### Local React scripts
-* To install the react project ===> npm install
-* To run react (on port 3000) ===> npm start
-* To run tests ===> npm run test
-
-##### Local Node scripts
-* To install the node project ===> npm install
-* To migrate the database ===> npm run migrate -- 1
-* To run Node server (on port 8000) ===> npm run dev
-* To run tests ===> npm run test
+* add database support
